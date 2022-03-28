@@ -27,6 +27,7 @@ To get a local copy up and running follow these simple example steps.
 
 - Run `bundle exec rspec` to run all the tests, and you see the official docs [here](https://github.com/rspec/rspec-rails).
 
+- To check linters run `rubocop -A` && `npx stylelint "**/*.{css,scss}" --fix`.
 ## Authors
 
 👤 **Kerolous Samy**
