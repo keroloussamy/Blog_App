@@ -1,1 +1,29 @@
-<h1>users Show</h1>
+<div class="user_con">
+  <%= image_tag (@user.photo), class: "user_img" %>
+  <div class="user_data_con">
+    <h1><%= @user.name %></h1>
+    <p class="post_number">Number of posts: <%= @user.posts_counter %></p>
+  </div>
+</div>
+
+<div class="bio_con">
+  <h3>Bio</h3>
+  <p><%=@user.bio%></p>
+</div>
+
+<ul>
+  <% @posts.each do |post| %>
+    <a href="/users/<%= @user.id %>/posts/<%= post.id %>">
+      <li class="post_con">
+        <h1><%= post.title %></h1>
+        <div class="post_data_con">
+          <p><%= post.text %></p>
+          <p class="post_number">Comments: <%= post.comments_counter %>, Likes: <%= post.likes_counter %></p>
+        </div>
+      </li>
+    </a>
+  <% end %>
+</ul>
+<div class="see_all_btn_con">
+  <a class="see_all_btn" href="/users/<%= @user.id %>/posts">See all Posts</a>
+</div>
