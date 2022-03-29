@@ -1,0 +1,51 @@
+ul {
+  padding-right: 5%;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+.user_con {
+  list-style: none;
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.user_img {
+  width: 10%;
+  border: 1px solid black;
+}
+
+.user_data_con {
+  border: 1px solid black;
+  width: 90%;
+  padding: 0 2%;
+}
+
+.post_number {
+  text-align: right;
+}
+/* ======== */
+.bio_con {
+  border: 1px solid black;
+  padding: 1%;
+}
+
+.post_con {
+  list-style: none;
+  margin-bottom: 10px;
+  border: 1px solid black;
+  padding: 0 2%;
+}
+
+.see_all_btn_con {
+  text-align: center;
+}
+
+.see_all_btn {
+  padding: 10px;
+  border: 1px solid black;
+}
