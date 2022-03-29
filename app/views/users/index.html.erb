@@ -1,14 +1,16 @@
-<%= stylesheet_link_tag "userIndex.css" %>
+<%= stylesheet_link_tag "style.css" %>
 <h1>Users Index</h1>
 
 <ul>
   <% @users.each do |user| %>
+    <a href="/users/<%= user.id %>">
     <li class="user_con">
       <%= image_tag (user.photo), class: "user_img" %>
       <div class="user_data_con">
         <h1><%= user.name %></h1>
-        <p class="posts_number">Number of posts: <%= user.posts_counter %></p>
+        <p class="post_number">Number of posts: <%= user.posts_counter %></p>
       </div>
-      </li>
+    </li>
+    </a>
   <% end %>
 </ul>
