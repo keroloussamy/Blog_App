@@ -6,6 +6,10 @@
   </div>
 </div>
 
+<div>
+  <h1><%= link_to "Click here to add New Post", new_user_post_path(@user)%></h1>
+</div>
+
 <ul>
   <% @user.posts.each do |post| %>
     <a href="/users/<%= @user.id %>/posts/<%= post.id %>">
