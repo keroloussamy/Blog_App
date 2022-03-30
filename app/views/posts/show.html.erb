@@ -1,1 +1,16 @@
-<h1>Posts Show</h1>
+<li class="post_con">
+<div>
+  <p class="post_number" style="float:right">Comments: <%= @post.comments_counter %>, Likes: <%= @post.likes_counter %></p>
+  <h1><%= @post.title %> by <%= @post.author.name %> </h1>
+  </div>
+  <div class="post_data_con">
+    <p><%= @post.text %></p>
+    <hr>
+    <h2>Comments</h2>
+    <ul>
+      <% @post.comments.each do |comment| %>
+        <li><%= comment.author.name %> : <%= comment.text %></li>
+      <% end %>
+    </ul>
+  </div>
+</li>
