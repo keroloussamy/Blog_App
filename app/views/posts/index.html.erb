@@ -1,1 +1,28 @@
-<h1>Posts Index</h1>
+<div class="user_con">
+  <%= image_tag (@user.photo), class: "user_img" %>
+  <div class="user_data_con">
+    <h1><%= @user.name %></h1>
+    <p class="post_number">Number of posts: <%= @user.posts_counter %></p>
+  </div>
+</div>
+
+<ul>
+  <% @user.posts.each do |post| %>
+    <a href="/users/<%= @user.id %>/posts/<%= post.id %>">
+      <li class="post_con">
+        <h1><%= post.title %></h1>
+        <div class="post_data_con">
+          <p><%= post.text %></p>
+          <p class="post_number">Comments: <%= post.comments_counter %>, Likes: <%= post.likes_counter %></p>
+          <hr>
+          <h2>Comments</h2>
+          <ul>
+            <% post.comments.each do |comment| %>
+              <li><%= comment.author.name %> : <%= comment.text %></li>
+            <% end %>
+          </ul>
+        </div>
+      </li>
+    </a>
+  <% end %>
+</ul>
