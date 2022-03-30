@@ -12,7 +12,7 @@
 </div>
 
 <ul>
-  <% @posts.each do |post| %>
+  <% @user.posts.each do |post| %>
     <a href="/users/<%= @user.id %>/posts/<%= post.id %>">
       <li class="post_con">
         <h1><%= post.title %></h1>
