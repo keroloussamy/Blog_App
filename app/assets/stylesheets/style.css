@@ -2,6 +2,10 @@ ul {
   padding-right: 5%;
 }
 
+li {
+  list-style: none;
+}
+
 a {
   text-decoration: none;
   color: black;
@@ -38,7 +42,7 @@ a {
   list-style: none;
   margin-bottom: 10px;
   border: 1px solid black;
-  padding: 0 2%;
+  padding: 1% 2%;
 }
 
 .see_all_btn_con {
