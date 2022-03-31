@@ -6,6 +6,9 @@
   <div class="post_data_con">
     <p><%= @post.text %></p>
     <hr>
+      <%= form_with url: "/users/#{@post.author.id}/posts/#{@post.id}/likes" do |form| %>
+        <%= form.submit "Like", class: "submit-btn" %>
+      <% end %>
     <h2>Comments</h2>
     <ul>
       <% @post.comments.each do |comment| %>
@@ -14,3 +17,14 @@
     </ul>
   </div>
 </li>
+
+<h2>Add a comment:</h2>
+<%= form_with(model: [ @post.author, @post.author.comments.build ], url: "/users/#{@post.author.id}/posts/#{@post.id}/comments") do |form| %>
+  <p>
+    <%= form.label :text %><br>
+    <%= form.text_area :text %>
+  </p>
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>
