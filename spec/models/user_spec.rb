@@ -1,9 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  subject { 
-    User.new(name: 'Tom1', photo: 'https://unsplash.com/photos/F_-0BxGuVvo', bio: 'Teacher from Mexico.', posts_counter: 1) 
-  }
+  subject do
+    User.new(name: 'Tom1', photo: 'https://unsplash.com/photos/F_-0BxGuVvo', bio: 'Teacher from Mexico.',
+             posts_counter: 1)
+  end
   before { subject.save }
 
   it 'name should be present' do
@@ -24,11 +25,11 @@ RSpec.describe User, type: :model do
     expect(subject).to be_valid
   end
 
-  it 'last_three_posts return 3 posts' do 
-    subject.posts.create(title: 'Hello', text: 'This is my 1 post') 
-    subject.posts.create(title: 'Hello', text: 'This is my 2 post') 
-    subject.posts.create(title: 'Hello', text: 'This is my 3 post') 
-    subject.posts.create(title: 'Hello', text: 'This is my 4 post') 
-    expect(subject.last_three_posts.count).to eq(3) 
-  end 
+  it 'last_three_posts return 3 posts' do
+    subject.posts.create(title: 'Hello', text: 'This is my 1 post')
+    subject.posts.create(title: 'Hello', text: 'This is my 2 post')
+    subject.posts.create(title: 'Hello', text: 'This is my 3 post')
+    subject.posts.create(title: 'Hello', text: 'This is my 4 post')
+    expect(subject.last_three_posts.count).to eq(3)
+  end
 end

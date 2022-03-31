@@ -1,9 +1,20 @@
 require 'rails_helper'
 
 RSpec.describe Post, type: :model do
-  subject { 
-    Post.create(author: User.create(name: 'Tom1', photo: 'https://unsplash.com/photos/F_-0BxGuVvo', bio: 'Teacher from Mexico.', posts_counter: 1), title: 'Hello', text: 'This is my first post', comments_counter: 1, likes_counter: 1) 
-  }
+  subject do
+    Post.create(
+      author: User.create(
+        name: 'Tom1',
+        photo: 'https://unsplash.com/photos/F_-0BxGuVvo',
+        bio: 'Teacher from Mexico.',
+        posts_counter: 1
+      ),
+      title: 'Hello',
+      text: 'This is my first post',
+      comments_counter: 1,
+      likes_counter: 1
+    )
+  end
 
   it 'title should be present' do
     subject.title = nil
@@ -41,16 +52,16 @@ RSpec.describe Post, type: :model do
     expect(subject).to be_valid
   end
 
-  it 'update_post_user_counter should update post user counter' do 
+  it 'update_post_user_counter should update post user counter' do
     expect(subject.author.posts_counter).to eq(2)
-  end 
+  end
 
-  it 'last_five_comments return 5 comments' do 
-    subject.comments.create(text: 'Hi Tom!') 
-    subject.comments.create(text: 'Hi Tom!') 
-    subject.comments.create(text: 'Hi Tom!') 
-    subject.comments.create(text: 'Hi Tom!') 
-    subject.comments.create(text: 'Hi Tom!') 
-    expect(subject.last_five_comments.count).to eq(5) 
-  end 
+  it 'last_five_comments return 5 comments' do
+    subject.comments.create(text: 'Hi Tom!')
+    subject.comments.create(text: 'Hi Tom!')
+    subject.comments.create(text: 'Hi Tom!')
+    subject.comments.create(text: 'Hi Tom!')
+    subject.comments.create(text: 'Hi Tom!')
+    expect(subject.last_five_comments.count).to eq(5)
+  end
 end
