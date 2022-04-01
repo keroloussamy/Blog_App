@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   def index
-    @user = User.find(params[:user_id])
+    @user = User.includes(:posts, :comments).find(params[:user_id])
   end
 
   def show
@@ -13,6 +13,7 @@ class PostsController < ApplicationController
 
   def create
     @post = current_user.posts.create(post_params)
+    flash[:success] = 'Post create successfully'
     redirect_to user_posts_path(current_user.id)
   end
 

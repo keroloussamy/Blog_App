@@ -27,3 +27,5 @@
 <div class="see_all_btn_con">
   <a class="see_all_btn" href="/users/<%= @user.id %>/posts">See all Posts</a>
 </div>
+
+<% flash.each do |type, msg| %> <div> <%= msg %> </div> <% end %> 
