@@ -1,5 +1,5 @@
 <div class="user_con">
-  <%= image_tag (@user.photo), class: "user_img" %>
+  <%= image_tag (@user.photo || 'https://media.istockphoto.com/vectors/user-icon-flat-isolated-on-white-background-user-symbol-vector-vector-id1300845620?k=20&m=1300845620&s=612x612&w=0&h=f4XTZDAv7NPuZbG0habSpU0sNgECM0X7nbKzTUta3n8='), class: "user_img" %>
   <div class="user_data_con">
     <h1><%= @user.name %></h1>
     <p class="post_number">Number of posts: <%= @user.posts_counter %></p>
@@ -28,4 +28,3 @@
   <a class="see_all_btn" href="/users/<%= @user.id %>/posts">See all Posts</a>
 </div>
 
-<% flash.each do |type, msg| %> <div> <%= msg %> </div> <% end %> 
