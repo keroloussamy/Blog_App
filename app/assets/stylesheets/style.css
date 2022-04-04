@@ -53,3 +53,13 @@ a {
   padding: 10px;
   border: 1px solid black;
 }
+
+.field {
+  border: 1px solid black;
+  padding: 1%;
+  width: 100%;
+}
+
+form {
+  display: flex;
+}
