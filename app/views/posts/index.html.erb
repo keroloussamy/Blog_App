@@ -6,9 +6,11 @@
   </div>
 </div>
 
-<div>
-  <h1><%= link_to "Click here to add New Post", new_user_post_path(@user)%></h1>
-</div>
+<% if user_signed_in? %>
+  <div>
+    <h1><%= link_to "Click here to add New Post", new_user_post_path(@user)%></h1>
+  </div>
+<% end %>
 
 <ul>
   <% @user.posts.each do |post| %>
