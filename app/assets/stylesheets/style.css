@@ -53,3 +53,8 @@ a {
   padding: 10px;
   border: 1px solid black;
 }
+
+.new_user {
+  width: 100%;
+  text-align: center;
+}
