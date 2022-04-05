@@ -31,9 +31,9 @@ class Ability
     # See the wiki for details:
     # https://github.com/CanCanCommunity/cancancan/wiki/Defining-Abilities
 
-
-    can :manage, Post, user_id: user.id
-    can :manage, Comment, user_id: user.id
+    return unless user.present?
+    can :destroy, Post, author_id: user.id
+    can :destroy, Comment, author_id: user.id
     return unless user.admin?
     can :manage, :all
   end
