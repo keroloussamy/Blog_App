@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_out_path_for(resource)
-    if resource === current_user
+    if resource == current_user
       request.referrer
     else
       root_path
