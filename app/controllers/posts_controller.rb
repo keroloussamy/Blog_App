@@ -17,6 +17,13 @@ class PostsController < ApplicationController
     redirect_to user_posts_path(current_user.id)
   end
 
+  def destroy
+    post = Post.find(params[:id])
+    post.destroy
+
+    redirect_to root_path, status: :see_other
+  end
+
   private
 
   def post_params
