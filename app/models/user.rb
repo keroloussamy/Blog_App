@@ -13,4 +13,8 @@ class User < ApplicationRecord
   def last_three_posts
     posts.last(3)
   end
+
+  def admin?
+    self.role == 'admin'
+  end
 end
