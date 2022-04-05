@@ -58,3 +58,8 @@ a {
   width: 100%;
   text-align: center;
 }
+
+.delete_btn {
+  background-color: red;
+  margin-top: 10px;
+}
