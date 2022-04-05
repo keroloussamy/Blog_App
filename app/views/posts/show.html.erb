@@ -9,6 +9,10 @@
       <%= form_with url: "/users/#{@post.author.id}/posts/#{@post.id}/likes" do |form| %>
         <%= form.submit "Like", class: "submit-btn" %>
       <% end %>
+      <%= link_to "Destroy", user_post_path(@post.author.id, @post), data: {
+                    turbo_method: :delete,
+                    turbo_confirm: "Are you sure?"
+                  } %>
     <h2>Comments</h2>
     <ul>
       <% @post.comments.each do |comment| %>
