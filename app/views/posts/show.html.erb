@@ -6,12 +6,14 @@
   <div class="post_data_con">
     <p><%= @post.text %></p>
     <hr>
-      <%= form_with url: "/users/#{@post.author.id}/posts/#{@post.id}/likes" do |form| %>
-        <%= form.submit "Like", class: "submit-btn" %>
+      <% if user_signed_in? %>
+        <%= form_with url: "/users/#{@post.author.id}/posts/#{@post.id}/likes" do |form| %>
+          <%= form.submit "Like", class: "submit-btn" %>
+        <% end %>
       <% end %>
       <%# Delet button for posts %>
-      <% if can? :destroy , @post.author.id %>
-        <%= link_to "Delete", user_post_path(@post.author.id, @post), data: {
+      <% if can? :destroy, @post %>
+        <%= link_to "Delete", user_post_path(@post.author.id, @post), class: "delete_btn", data: {
                       turbo_method: :delete,
                       turbo_confirm: "Are you sure?"
                     } %>
@@ -21,8 +23,8 @@
       <% @post.comments.each do |comment| %>
         <li><%= comment.author.name %> : <%= comment.text %></li>
         <%# Delete button for comments %>
-        <% if can? :destroy , @post.author.id %>
-          <%= link_to "Delete", user_post_comment_path(@post.author.id, @post, comment), data: {
+        <% if can? :destroy, comment %>
+          <%= link_to "Delete", user_post_comment_path(@post.author.id, @post, comment), class: "delete_btn", data: {
                     turbo_method: :delete,
                     turbo_confirm: "Are you sure?"
                   } %>
@@ -32,14 +34,15 @@
   </div>
 </li>
 
-<h2>Add a comment:</h2>
-<%= form_with(model: [ @post.author, @post.author.comments.build ], url: "/users/#{@post.author.id}/posts/#{@post.id}/comments") do |form| %>
-  <p>
-    <%= form.label :text %><br>
-    <%= form.text_area :text %>
-  </p>
-  <p>
-    <%= form.submit %>
-  </p>
+<% if user_signed_in? %>
+  <h2>Add a comment:</h2>
+  <%= form_with(model: [ @post.author, @post.author.comments.build ], url: "/users/#{@post.author.id}/posts/#{@post.id}/comments") do |form| %>
+    <p>
+      <%= form.label :text %><br>
+      <%= form.text_area :text %>
+    </p>
+    <p>
+      <%= form.submit %>
+    </p>
+  <% end %>
 <% end %>
-
