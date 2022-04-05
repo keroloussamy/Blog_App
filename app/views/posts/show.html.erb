@@ -9,7 +9,7 @@
       <%= form_with url: "/users/#{@post.author.id}/posts/#{@post.id}/likes" do |form| %>
         <%= form.submit "Like", class: "submit-btn" %>
       <% end %>
-      <%= link_to "Destroy", user_post_path(@post.author.id, @post), data: {
+      <%= link_to "Delete", user_post_path(@post.author.id, @post), data: {
                     turbo_method: :delete,
                     turbo_confirm: "Are you sure?"
                   } %>
@@ -17,6 +17,10 @@
     <ul>
       <% @post.comments.each do |comment| %>
         <li><%= comment.author.name %> : <%= comment.text %></li>
+        <%= link_to "Delete", user_post_comment_path(@post.author.id, @post, comment), data: {
+                    turbo_method: :delete,
+                    turbo_confirm: "Are you sure?"
+                  } %>
       <% end %>
     </ul>
   </div>
