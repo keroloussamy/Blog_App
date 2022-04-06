@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe 'Post Index', type: :feature do
   describe 'Post Index' do
     before(:each) do
-      @user = User.create! name: 'kero', password: '123456', email: 'kero@gmail.com',confirmed_at: Time.now
+      @user = User.create! name: 'kero', password: '123456', email: 'kero@gmail.com', confirmed_at: Time.now
       @post = @user.posts.create!(title: 'title post', text: 'text post')
       @comment1 = @post.comments.create!(text: 'Comment 1', author_id: @user.id)
       @comment2 = @post.comments.create!(text: 'Comment 2', author_id: @user.id)
@@ -32,7 +32,7 @@ RSpec.describe 'Post Index', type: :feature do
     it '4- I can see a posts title.' do
       expect(page).to have_content('title post')
     end
-    
+
     it '5- I can see some of the posts body.' do
       expect(page).to have_content('text post')
     end
@@ -44,7 +44,7 @@ RSpec.describe 'Post Index', type: :feature do
     it '7- I can see how many comments a post has.' do
       expect(page).to have_content 'Comments:'
     end
-    
+
     it '8- I can see how many likes a post has.' do
       expect(page).to have_content 'Likes:'
     end

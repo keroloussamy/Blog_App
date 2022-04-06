@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe 'User Index', type: :feature do
   describe 'User Index' do
     before(:each) do
-      @user = User.create! name: 'kero', password: '123456', email: 'kero@gmail.com',confirmed_at: Time.now
+      @user = User.create! name: 'kero', password: '123456', email: 'kero@gmail.com', confirmed_at: Time.now
       visit new_user_session_path
       fill_in 'Email', with: 'kero@gmail.com'
       fill_in 'Password', with: '123456'
@@ -24,7 +24,8 @@ RSpec.describe 'User Index', type: :feature do
       expect(page).to have_content('Number of posts:')
     end
 
-    it '4- When I click the submit button after filling in the username and the password with correct data, I am redirected to the root page.' do
+    it '4- When I click the submit button after filling in the username
+    and the password with correct data, I am redirected to the root page.' do
       click_on 'kero'
       expect(page).to have_current_path user_path(@user)
     end

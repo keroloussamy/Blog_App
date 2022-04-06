@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe 'Post Show', type: :feature do
   describe 'Post Show' do
     before(:each) do
-      @user = User.create! name: 'kero', password: '123456', email: 'kero@gmail.com',confirmed_at: Time.now
+      @user = User.create! name: 'kero', password: '123456', email: 'kero@gmail.com', confirmed_at: Time.now
       @post = @user.posts.create!(title: 'title post', text: 'text post')
       @comment1 = @post.comments.create!(text: 'Comment 1', author_id: @user.id)
       @comment2 = @post.comments.create!(text: 'Comment 2', author_id: @user.id)
@@ -19,7 +19,7 @@ RSpec.describe 'Post Show', type: :feature do
     it '1- I can see a posts title.' do
       expect(page).to have_content('title post')
     end
-    
+
     it '2- I can see some of the posts body.' do
       expect(page).to have_content('text post by kero')
     end
@@ -27,7 +27,7 @@ RSpec.describe 'Post Show', type: :feature do
     it '3- I can see how many comments it has' do
       expect(page).to have_content 'Comments:'
     end
-    
+
     it '4- I can see how many likes it has' do
       expect(page).to have_content 'Likes:'
     end

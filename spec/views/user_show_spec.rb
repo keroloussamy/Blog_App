@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe 'User Show', type: :feature do
   describe 'User Show' do
     before(:each) do
-      @user = User.create! name: 'kero', password: '123456', email: 'kero@gmail.com',confirmed_at: Time.now
+      @user = User.create! name: 'kero', password: '123456', email: 'kero@gmail.com', confirmed_at: Time.now
       @post1 = @user.posts.create!(title: 'title 1', text: 'text 1')
       @post2 = @user.posts.create!(title: 'title 2', text: 'text 2')
       @post3 = @user.posts.create!(title: 'title 3', text: 'text 3')
@@ -31,7 +31,7 @@ RSpec.describe 'User Show', type: :feature do
     it '4- I can see the users bio.' do
       expect(page).to have_content('Bio')
     end
-    
+
     it '5- I can see the users first 3 posts.' do
       expect(page).to have_content 'text 1'
       expect(page).to have_content 'text 2'
