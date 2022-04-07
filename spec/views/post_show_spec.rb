@@ -21,7 +21,7 @@ RSpec.describe 'Post Show', type: :feature do
     end
 
     it '2- I can see some of the posts body.' do
-      expect(page).to have_content('text post by kero')
+      expect(page).to have_content('text post')
     end
 
     it '3- I can see how many comments it has' do

@@ -23,7 +23,6 @@ RSpec.describe 'User Show', type: :feature do
 
     it '2- I can see the users username.' do
       expect(page).to have_content('kero')
-      expect(page).to have_content('Will')
     end
 
     it '3- I can see the number of posts the user has written.' do

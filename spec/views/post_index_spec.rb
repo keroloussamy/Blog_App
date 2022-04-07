@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature 'Post Index' do
+RSpec.describe 'Post Index', type: :feature do
   describe 'Post Index' do
     background do
       @user = User.create! name: 'kero', password: '123456', email: 'kero@gmail.com', confirmed_at: Time.now
