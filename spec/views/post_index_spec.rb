@@ -1,8 +1,8 @@
 require 'rails_helper'
 
-RSpec.describe 'Post Index', type: :feature do
+feature 'Post Index' do
   describe 'Post Index' do
-    before(:each) do
+    background do
       @user = User.create! name: 'kero', password: '123456', email: 'kero@gmail.com', confirmed_at: Time.now
       @post = @user.posts.create!(title: 'title post', text: 'text post')
       @comment1 = @post.comments.create!(text: 'Comment 1', author_id: @user.id)
@@ -16,43 +16,44 @@ RSpec.describe 'Post Index', type: :feature do
       click_on 'See all Posts'
     end
 
-    it '1- I can see the users profile picture.' do
+    scenario '1- I can see the users profile picture.' do
       image = page.all('img')
       expect(image.size).to eql(1)
     end
 
-    it '2- I can see the users username.' do
+    scenario '2- I can see the users username.' do
       expect(page).to have_content('kero')
     end
 
-    it '3- I can see the number of posts the user has written.' do
+    scenario '3- I can see the number of posts the user has written.' do
       expect(page).to have_content('Number of posts:')
     end
 
-    it '4- I can see a posts title.' do
+    scenario '4- I can see a posts title.' do
       expect(page).to have_content('title post')
     end
 
-    it '5- I can see some of the posts body.' do
+    scenario '5- I can see some of the posts body.' do
       expect(page).to have_content('text post')
     end
 
-    it '6- I can see the first comments on a post.' do
+    scenario '6- I can see the first comments on a post.' do
       expect(page).to have_content 'Comment 1'
     end
 
-    it '7- I can see how many comments a post has.' do
+    scenario '7- I can see how many comments a post has.' do
       expect(page).to have_content 'Comments:'
     end
 
-    it '8- I can see how many likes a post has.' do
+    scenario '8- I can see how many likes a post has.' do
       expect(page).to have_content 'Likes:'
     end
-    it '9- I can see a section for pagination if there are more posts than fit on the view.' do
+
+    scenario '9- I can see a section for pagination if there are more posts than fit on the view.' do
       expect(page).to have_content 'Pagination'
     end
 
-    it '10- When I click on a post, it redirects me to that posts show page.' do
+    scenario '10- When I click on a post, it redirects me to that posts show page.' do
       click_on 'title post'
       expect(page).to have_current_path user_post_path(@user, @post)
     end
