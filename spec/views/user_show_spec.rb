@@ -4,6 +4,7 @@ RSpec.describe 'User Show', type: :feature do
   describe 'User Show' do
     before(:each) do
       @user = User.create! name: 'kero', password: '123456', email: 'kero@gmail.com', confirmed_at: Time.now
+      @user1 = User.create! name: 'Will', password: '123456', email: 'will@gmail.com', confirmed_at: Time.now
       @post1 = @user.posts.create!(title: 'title 1', text: 'text 1')
       @post2 = @user.posts.create!(title: 'title 2', text: 'text 2')
       @post3 = @user.posts.create!(title: 'title 3', text: 'text 3')
@@ -22,6 +23,7 @@ RSpec.describe 'User Show', type: :feature do
 
     it '2- I can see the users username.' do
       expect(page).to have_content('kero')
+      expect(page).to have_content('Will')
     end
 
     it '3- I can see the number of posts the user has written.' do
