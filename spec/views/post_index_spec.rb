@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'Post Index', type: :feature do
   describe 'Post Index' do
-    background do
+    before(:each) do
       @user = User.create! name: 'kero', password: '123456', email: 'kero@gmail.com', confirmed_at: Time.now
       @post = @user.posts.create!(title: 'title post', text: 'text post')
       @comment1 = @post.comments.create!(text: 'Comment 1', author_id: @user.id)
