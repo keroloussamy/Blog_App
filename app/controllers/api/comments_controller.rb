@@ -6,7 +6,19 @@ class Api::CommentsController < ApplicationController
 
   def create
     # user = current_user
-    # user = User.find(params[:user_id])
+    token = params[:token]
+
+    decoded_token = JWT.decode(
+      token, 
+      AuthenticationTokenService::HMAC_SECRET,
+      true, 
+      { 
+        algorithm: AuthenticationTokenService::ALGORITHM_TYPE 
+      }
+    )
+    
+    user = User.find(decoded_token.user_id)
+    
     @comment = Comment.new(comment_params)
     @comment.author = user
 
