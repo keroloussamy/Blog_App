@@ -17,7 +17,7 @@ describe AuthenticationTokenService do
 
       expect(decoded_token).to eql(
         [
-          {"test"=>"blah"}, # payload
+          {"userId"=>"1"}, # payload
           {"alg"=>"HS256"} # header
         ]
       )
